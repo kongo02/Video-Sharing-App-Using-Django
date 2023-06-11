@@ -1,0 +1,21 @@
+{% extends 'video/base.html' %}
+{% block content %}
+    </br>
+    <div>
+        <h1>Video Title : {{ object.title }}</h1>
+        <h12>The video was uploaded on {{ object.upload_date }}</h12>
+        <p>Video by :{{ object.creator }}</p>
+        <p>Category :{{ object.category }}</p>
+        <p>Description : {{ object.description }}</p>
+            <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'video-update' object.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'video-delete' object.id %}">Delete</a>
+            </div>
+        <video controls>
+            <source src="{{ object.video.url }}" type="video/mp4">
+            Your browser does not support the audio element.
+        </video>
+          
+        
+    </div>
+{% endblock content %}

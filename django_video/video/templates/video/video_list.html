@@ -1,0 +1,28 @@
+{% extends 'video/base.html' %}
+
+{% block content %}
+</br>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-4">
+        {% for item in videos %}
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    <p class="card-text">Artist: {{ item.creator }}</p>
+                    <p class="card-text">Category: {{ item.category }}</p>
+                    <p class="card-text">Uploaded on: {{ item.upload_date }}</p>
+                    <video controls style="max-width:100%;">
+                        <source src="{{ item.video.url }}" type="video/mp4">
+                        Your browser does not support the audio element.
+                    </video>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'video-detail' item.id %}" class="btn btn-outline-info">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
